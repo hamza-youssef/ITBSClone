@@ -1,0 +1,27 @@
+{
+  "name": "miniprojetweb",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "back": "cd backend && nodemon server.js",
+    "front": "cd client && npm run serve",
+    "dev": "concurrently \"npm run front\" \"npm run back\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hamza-youssef/ITBS_Clone.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/hamza-youssef/ITBS_Clone/issues"
+  },
+  "homepage": "https://github.com/hamza-youssef/ITBS_Clone#readme",
+  "dependencies": {
+    "axios": "^0.27.2",
+    "concurrently": "^7.0.0",
+    "vuex": "^4.0.2"
+  }
+}
