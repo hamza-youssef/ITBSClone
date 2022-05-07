@@ -13,6 +13,8 @@ import Management from "./components/pages/Management.vue";
 import Finance from "./components/pages/Finance.vue";
 import Login from "./components/pages/Login.vue";
 import Profile from "./components/pages/Profile.vue";
+import ProfileEtud from "./components/pages/ProfileEtud.vue";
+import ProfileProf from "./components/pages/ProfileProf.vue";
 
 const routes = [
   { path: "/", component: Home },
@@ -28,7 +30,9 @@ const routes = [
   { path: "/Management", component: Management },
   { path: "/Financiere", component: Finance },
   { path: "/Login", component: Login },
-  { name: 'profile', path: '/profile', component: Profile, props:true },
+  { name: 'profile', path: '/profile', component: Profile, props: true },
+  { name: 'profileEtud', path: '/profileEtudiant', component: ProfileEtud, props: true },
+  { name: 'ProfileProf', path: '/profileProfesseur', component: ProfileProf, props: true },
 ];
 const router = createRouter({
   history: createWebHashHistory(),

@@ -84,6 +84,7 @@ export default {
       Email: "",
       Password: "",
       Name: "",
+      role: "",
     };
   },
   computed: {
@@ -115,19 +116,19 @@ export default {
       this.mode = "login";
     },
     async login() {
-      let response = await this.$store
-        .dispatch("login", {
-          email: this.Email,
-          password: this.Password,
-        })
-          if (response) {
-            console.log(`hadhy:${response.data}`)
-            this.$router.push("/profile");
-          }
-          else {
-            console.log("error");
-          }
-        
+      let response = await this.$store.dispatch("login", {
+        email: this.Email,
+        password: this.Password,
+      });
+      if (response) {
+        if (response.data.user.role === "admin") this.$router.push("/profile");
+        else if (response.data.user.role === "etudiant")
+          this.$router.push("/profileEtudiant");
+        else if (response.data.user.role === "professeur")
+          this.$router.push("/profileProfesseur");
+      } else {
+        console.log("error");
+      }
     },
   },
 };

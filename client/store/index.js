@@ -24,21 +24,21 @@ if (!user) {
         };
     }
 }
-
+const userId = {id:null}
 // Create a new store instance.
 const store = createStore({
     state: {
         status: '',
         user: user,
         userInfos: {
-            nom: " " ,
+            nom: " ",
             prenom: '',
             email: '',
             role: '',
         },
     },
     mutations: {
-        
+
         setStatus: function (state, status) {
             state.status = status;
         },
@@ -46,11 +46,12 @@ const store = createStore({
             instance.defaults.headers.common['x-auth-token'] = user.token;
             localStorage.setItem('user', JSON.stringify(user));
             state.user = user;
+           userId.id = user.user.id;
         },
         userInfos: function (state, userInfos) {
             state.userInfos = userInfos;
-            
-          },
+
+        },
         logout: function (state) {
             state.user = {
                 userId: -1,
@@ -67,15 +68,14 @@ const store = createStore({
                     .then(function (response) {
                         commit('setStatus', '');
                         commit('logUser', response.data);
-                        resolve(response);   
-console.log(`aa:${userInfos}`)
+                        resolve(response);
                     })
                     .catch(function (error) {
                         commit('setStatus', 'error_login');
                         reject(error);
                     });
             });
-            
+
         },
         // createAccount: ({ commit }, userInfos) => {
         //     commit('setStatus', 'loading');
@@ -94,11 +94,10 @@ console.log(`aa:${userInfos}`)
         // },
 
         getUserInfos: ({ commit }) => {
-            instance.get(`/users/${4}`)
-            .then(function (response) {
-                    console.log(response.data)
+            instance.get(`/users/${userId.id}`)
+                .then(function (response) {
                     commit('userInfos', response.data);
-                   
+
                 })
                 .catch(function () {
                 });

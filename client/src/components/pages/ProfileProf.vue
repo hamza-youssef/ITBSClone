@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <h1>Etudiant</h1>
+    <h1>Professeur</h1>
     <!-- Logout Button -->
     <div class="form-row text-center m-5">
       <button @click="logout()" class="btn btn-danger ">
